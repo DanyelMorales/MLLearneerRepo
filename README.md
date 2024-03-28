@@ -1,4 +1,4 @@
-# MLLearneerRepo
+# ML Linear Regression from Scratch
 
 In this repository, you'll discover several engaging Jupyter notebooks where you can delve into the fundamentals of Machine Learning, specifically Linear Regression.
 

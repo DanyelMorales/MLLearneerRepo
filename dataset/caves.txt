@@ -1,0 +1,7 @@
+Cave Temperature (°C)   Depth of Cave (m)
+12                     20
+10                     25
+ 8                     30
+ 6                     35
+ 4                     40
+ 2                     45

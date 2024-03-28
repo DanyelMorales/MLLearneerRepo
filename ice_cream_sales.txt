@@ -1,0 +1,7 @@
+Temperature (°C)    Ice Cream Sales
+20                   25
+25                   30
+30                   35
+35                   40
+40                   45
+45                   50

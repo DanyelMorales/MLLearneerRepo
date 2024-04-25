@@ -1,4 +1,4 @@
-# ML Linear Regression from Scratch
+# ML from Scratch
 
 In this repository, you'll discover several engaging Jupyter notebooks where you can delve into the fundamentals of Machine Learning, specifically Linear Regression.
 
@@ -8,8 +8,3 @@ It's worth noting that my inspiration and learning stemmed from Paolo Perrotta's
 
 One novel addition I've incorporated is a method to visualize an animation of the W line as it approximates the values. This visualization aids in comprehending the behavior of the approximation, offering insights into its performance.
 
-## Pizza store solution
-
-* LinearRegressionWithAnimation_bias.ipynb
-* LinearRegressionWithAnimation.ipynb
-* linear_regression.ipynb

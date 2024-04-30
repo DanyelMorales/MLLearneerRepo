@@ -19,6 +19,9 @@ def train(X,Y, iterations, lr):
     w -= gradient(X, Y, w) * lr
   return w
 
+def mse_loss(X,Y,w):
+  return np.average((forward(X,w) - Y) ** 2)
+  
 def sigmoid(z):
   return 1/ (1 + np.exp(-z))
 

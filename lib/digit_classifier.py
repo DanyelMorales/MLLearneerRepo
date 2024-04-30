@@ -32,5 +32,4 @@ def test(X,Y,w):
   total_examples = X.shape[0]
   correct_results = np.sum(classify(X,w) == Y)
   success_pct = correct_results * 100 / total_examples
-  print(f"Success: {correct_results} {total_examples} {success_pct}")
-
+  print(f"Success: {correct_results}/{total_examples} {success_pct}%")

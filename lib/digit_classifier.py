@@ -15,11 +15,13 @@ def gradient(X,Y,w):
 def train(X,Y, iterations, lr):
   w=np.zeros((X.shape[1], 1), dtype=np.float64)
   for i in range(iterations):
-    print(f"iteration {i} => loss {mse_loss(X,Y,w)}")
+    report(i, X_train, Y_train, X_test, Y_test, w)
     w -= gradient(X, Y, w) * lr
+    report(i, X_train, Y_train, X_test, Y_test, w)
+  
   return w
 
-def mse_loss(X,Y,w):
+def loss(X,Y,w):
   y_hat = forward(X,w)
   first_term = Y * np.log(y_hat)
   second_term = ( 1 - Y ) * np.log(1-y_hat)

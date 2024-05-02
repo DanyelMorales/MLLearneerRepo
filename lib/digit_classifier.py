@@ -39,7 +39,7 @@ def report(iteration, X_train, Y_train, X_test, Y_test, w):
   n_test_examples = Y_test.shape[0]
   matches = matches * 100.0 / n_test_examples
   training_loss = loss(X_train, Y_train, w)
-  print(f"{iteration} - Loss: {training_loss},{matches}")
+  print(f"{iteration} - Loss: {training_loss}, \n {matches}%")
   
 def test(X,Y,w):
   total_examples = X.shape[0]

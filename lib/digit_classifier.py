@@ -20,14 +20,26 @@ def train(X,Y, iterations, lr):
   return w
 
 def mse_loss(X,Y,w):
-  return np.average((forward(X,w) - Y) ** 2)
+  y_hat = forward(X,w)
+  first_term = Y * np.log(y_hat)
+  second_term = ( 1 - Y ) * np.log(1-y_hat)
+  return -np.sum(first_term + second_term)/X.shape[0]
   
 def sigmoid(z):
   return 1/ (1 + np.exp(-z))
 
 def classify(X,w):
-  return np.round(forward(X,w))
+  y_hat = forward(X,w)
+  labels=np.argmax(y_hat, axis=1)
+  return labels.reshape(-1,1)
 
+def report(iteration, X_train, Y_train, X_test, Y_test, w):
+  matches = np.count_nonzero(classify(X_test, w) == Y_test)
+  n_test_examples = Y_test.shape[0]
+  matches = matches * 100.0 / n_test_examples
+  training_loss = loss(X_train, Y_train, w)
+  print(f"{iteration} - Loss: {training_loss},{matches}")
+  
 def test(X,Y,w):
   total_examples = X.shape[0]
   correct_results = np.sum(classify(X,w) == Y)

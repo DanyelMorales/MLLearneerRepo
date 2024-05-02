@@ -17,7 +17,7 @@ def train(X_train, Y_train, X_test, Y_test, iterations, lr):
   for i in range(iterations):
     report(i, X_train, Y_train, X_test, Y_test, w)
     w -= gradient(X_train, Y_train, w) * lr
-    report(iterations, X_train, Y_train, X_test, Y_test, w)
+  report(iterations, X_train, Y_train, X_test, Y_test, w)
   return w
 
 def loss(X,Y,w):

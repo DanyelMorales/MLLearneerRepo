@@ -29,4 +29,15 @@ def load_labels(filename):
 
 def encode_fives(Y):
   # convert all 5s to 1, and everthing else to 0
-  return (Y==5).astype(int)
+  return (Y==1).astype(int)
+
+def one_hot_encode(Y, n_classes=10):
+  n_labels = Y.shape[0]
+  encoded_Y = np.zeros((n_labels,n_classes))
+  for i in range(n_labels):
+    label = Y[i]
+    encoded_Y[i][label] = 1
+
+  return encoded_Y
+
+

@@ -40,7 +40,7 @@ def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):
   
   if index_to_value != None:
     classified_main = []
-    for k,v in classified:
+    for v in classified:
       classified_tmp = []
       for vv in v:
         classified_tmp.append(index_to_value.get(vv))

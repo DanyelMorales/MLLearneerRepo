@@ -48,7 +48,7 @@ def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):
     classified=classified_main
     
   matches = np.count_nonzero(classified == Y_test)
-  print(f"matches={matches}")
+  print(f"matches={classified == Y_test}")
   n_test_examples = Y_test.shape[0]
   matches = matches * 100.0 / n_test_examples
   training_loss = loss(X_train, Y_train, w)

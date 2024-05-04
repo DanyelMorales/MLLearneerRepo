@@ -13,10 +13,10 @@ def gradient(X,Y,w):
   error=forward(X,w) - Y
   return np.matmul(X.T, (error)) / X.shape[0]
 
-def train(X_train, Y_train, X_test, Y_test, iterations, lr):
+def train(X_train, Y_train, X_test, Y_test, iterations, lr, positional_encoding=False):
   w=np.zeros((X_train.shape[1], Y_train.shape[1]), dtype=np.float64)
   for i in range(iterations):
-    report(i, X_train, Y_train, X_test, Y_test, w)
+    report(i, X_train, Y_train, X_test, Y_test, w, positional_encoding)
     w -= gradient(X_train, Y_train, w) * lr
   report(iterations, X_train, Y_train, X_test, Y_test, w)
   return w
@@ -35,9 +35,9 @@ def classify(X,w, from_one_hot_encode=False):
   labels=np.argmax(y_hat, axis=1)
   return labels.reshape(-1,1)
 
-def report(iteration, X_train, Y_train, X_test, Y_test, w, from_one_hot_encode=False):  
+def report(iteration, X_train, Y_train, X_test, Y_test, w, positional_encoding=False):  
   classified = classify(X_test, w)                                                  
-  if from_one_hot_encode:
+  if positional_encoding:
     print(y_hat)
     classified=mnist.one_hot_encoding_value_from_index(y_hat,classified[0])
   matches = np.count_nonzero(classified == Y_test)

@@ -37,7 +37,7 @@ def classify(X,w, from_one_hot_encode=False):
 
 def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):  
   classified = classify(X_test, w)                                                  
-  if positional_encoding != None:
+  if index_to_value != None:
     classified=index_to_value.get(classified[0])
   matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]

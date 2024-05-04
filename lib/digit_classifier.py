@@ -35,10 +35,10 @@ def classify(X,w, from_one_hot_encode=False):
   labels=np.argmax(y_hat, axis=1)
   return labels.reshape(-1,1)
 
-def report(iteration, X_train, Y_train, X_test, Y_test, w, positional_encoding=False):  
+def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):  
   classified = classify(X_test, w)                                                  
-  if positional_encoding:
-    classified=mnist.one_hot_encoding_value_from_index(Y_train,classified[0])
+  if positional_encoding != None:
+    classified=index_to_value.get(classified[0])
   matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]
   matches = matches * 100.0 / n_test_examples

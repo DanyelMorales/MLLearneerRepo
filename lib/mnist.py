@@ -55,7 +55,8 @@ def one_hot_encoding_values(Y):
   return value_to_index,index_to_value
 
 def one_hot_encoding_value_from_index(Y, i):
-  
+  _ignore,index_to_value=one_hot_encoding_values(Y)
+  return index_to_value.get(i)
 
 def extract_test_data(data_np, test_size=0.23):
   test_size = round(data_np.shape[0] * test_size)

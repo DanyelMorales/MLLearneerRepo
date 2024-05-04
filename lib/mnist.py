@@ -35,7 +35,7 @@ def one_hot_encode(Y, exact_match=False, n_classes=10):
   n_labels = Y.shape[0]
   encoded_Y = np.zeros((n_labels,n_classes))
 
-  match_dic = {}
+  value_to_index = {}
   if exact_match:
     value_to_index, _ignore = one_hot_encoding_values(Y)
     

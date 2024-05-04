@@ -4,6 +4,7 @@ import math
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
+import mnist
 
 def forward(X,w):
   return sigmoid(np.matmul(X,w))
@@ -29,13 +30,17 @@ def loss(X,Y,w):
 def sigmoid(z):
   return 1/ (1 + np.exp(-z))
 
-def classify(X,w):
+def classify(X,w, from_one_hot_encode=False):
   y_hat = forward(X,w)
   labels=np.argmax(y_hat, axis=1)
   return labels.reshape(-1,1)
 
-def report(iteration, X_train, Y_train, X_test, Y_test, w):
-  matches = np.count_nonzero(classify(X_test, w) == Y_test)
+def report(iteration, X_train, Y_train, X_test, Y_test, w, from_one_hot_encode=False):  
+  classified = classify(X_test, w)                                                  
+  if from_one_hot_encode:
+    print(y_hat)
+    classified=mnist.one_hot_encoding_value_from_index(y_hat,classified[0])
+  matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]
   matches = matches * 100.0 / n_test_examples
   training_loss = loss(X_train, Y_train, w)

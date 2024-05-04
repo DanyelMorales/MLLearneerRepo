@@ -46,6 +46,7 @@ def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):
         classified_tmp.append(index_to_value.get(vv))
       classified_main.append(classified_tmp)
     classified=classified_main
+    print(classified)
     
   matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]

@@ -37,16 +37,25 @@ def one_hot_encode(Y, exact_match=False, n_classes=10):
 
   match_dic = {}
   if exact_match:
-    unique_values = np.unique(Y)
-    match_dic = { v: ord(v) % len(unique_values)  for v in unique_values }
-    print(match_dic)
+    value_to_index, _ignore = one_hot_encoding_values(Y)
     
   for i in range(n_labels):
     label = Y[i]
     if exact_match:
-      label = match_dic.get(label)
+      label = value_to_index.get(label)
     encoded_Y[i][label] = 1
   return encoded_Y
+
+def one_hot_encoding_values(Y):
+  unique_values = np.unique(Y)
+  value_to_index = { v: ord(v) % len(unique_values)  for v in unique_values }
+  index_to_value = { v: k  for k,v in match_dic }
+
+  print(match_dic)
+  return value_to_index,index_to_value
+
+def one_hot_encoding_value_from_index(Y, i):
+  
 
 def extract_test_data(data_np, test_size=0.23):
   test_size = round(data_np.shape[0] * test_size)

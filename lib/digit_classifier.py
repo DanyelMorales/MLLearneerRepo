@@ -13,10 +13,10 @@ def gradient(X,Y,w):
   error=forward(X,w) - Y
   return np.matmul(X.T, (error)) / X.shape[0]
 
-def train(X_train, Y_train, X_test, Y_test, iterations, lr, positional_encoding=None):
+def train(X_train, Y_train, X_test, Y_test, iterations, lr, index_to_value=None):
   w=np.zeros((X_train.shape[1], Y_train.shape[1]), dtype=np.float64)
   for i in range(iterations):
-    report(i, X_train, Y_train, X_test, Y_test, w, positional_encoding)
+    report(i, X_train, Y_train, X_test, Y_test, w, index_to_value)
     w -= gradient(X_train, Y_train, w) * lr
   report(iterations, X_train, Y_train, X_test, Y_test, w)
   return w
@@ -30,7 +30,7 @@ def loss(X,Y,w):
 def sigmoid(z):
   return 1/ (1 + np.exp(-z))
 
-def classify(X,w, from_one_hot_encode=False):
+def classify(X,w):
   y_hat = forward(X,w)
   labels=np.argmax(y_hat, axis=1)
   return labels.reshape(-1,1)

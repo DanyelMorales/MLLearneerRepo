@@ -49,7 +49,7 @@ def one_hot_encode(Y, exact_match=False, n_classes=10):
 def one_hot_encoding_values(Y):
   unique_values = np.unique(Y)
   value_to_index = { v: ord(v) % len(unique_values)  for v in unique_values }
-  index_to_value = { v: k  for k,v in value_to_index }
+  index_to_value = { v: k  for k,v in value_to_index.items() }
   return value_to_index,index_to_value
 
 def one_hot_encoding_value_from_index(Y, i):

@@ -31,13 +31,21 @@ def encode_fives(Y):
   # convert all 5s to 1, and everthing else to 0
   return (Y==1).astype(int)
 
-def one_hot_encode(Y, n_classes=10):
+def one_hot_encode(Y, exact_match=False, n_classes=10):
   n_labels = Y.shape[0]
   encoded_Y = np.zeros((n_labels,n_classes))
+
+  match_dic = {}
+  if exact_match:
+    unique_values = np.unique(Y)
+    match_dic = { v: ord(v) % len(unique_values)  for v in unique_values }
+    print(match_dic)
+    
   for i in range(n_labels):
     label = Y[i]
+    if exact_match:
+      label = match_dic.get(label)
     encoded_Y[i][label] = 1
-
   return encoded_Y
 
 def extract_test_data(data_np, test_size=0.23):

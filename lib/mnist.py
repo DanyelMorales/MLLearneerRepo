@@ -31,7 +31,7 @@ def encode_fives(Y):
   # convert all 5s to 1, and everthing else to 0
   return (Y==1).astype(int)
 
-def one_hot_encode(Y, exact_match=False, n_classes=10):
+def one_hot_encode_(Y, exact_match=False, n_classes=10):
   n_labels = Y.shape[0]
   encoded_Y = np.zeros((n_labels,n_classes))
 
@@ -44,8 +44,12 @@ def one_hot_encode(Y, exact_match=False, n_classes=10):
     if exact_match:
       label = value_to_index.get(label)
     encoded_Y[i][label] = 1
+  return encoded_Y, value_to_index, _ignore
+  
+def one_hot_encode(Y, exact_match=False, n_classes=10):
+  encoded_Y, value_to_index, _ignore = one_hot_encode_(Y, exact_match,n_classes)
   return encoded_Y
-
+  
 def one_hot_encoding_values(Y):
   unique_values = np.unique(Y)
   value_to_index = { v: ord(v) % len(unique_values)  for v in unique_values }

@@ -36,10 +36,17 @@ def classify(X,w):
   return labels.reshape(-1,1)
 
 def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):  
-  classified = classify(X_test, w)                                                  
+  classified = classify(X_test, w)    
+  
   if index_to_value != None:
-    print(classified)
-    classified=index_to_value.get(classified[0])
+    classified_main = []
+    for k,v in classified:
+        classified_tmp = []
+      for vv in v:
+        classified_tmp.append(index_to_value.get(vv))
+      classified_main.append(classified_tmp)
+    classified=classified_main
+    
   matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]
   matches = matches * 100.0 / n_test_examples

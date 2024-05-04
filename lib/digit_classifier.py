@@ -38,6 +38,7 @@ def classify(X,w):
 def report(iteration, X_train, Y_train, X_test, Y_test, w, index_to_value=None):  
   classified = classify(X_test, w)                                                  
   if index_to_value != None:
+    print(classified)
     classified=index_to_value.get(classified[0])
   matches = np.count_nonzero(classified == Y_test)
   n_test_examples = Y_test.shape[0]

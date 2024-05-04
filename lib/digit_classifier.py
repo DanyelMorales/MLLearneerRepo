@@ -13,7 +13,7 @@ def gradient(X,Y,w):
   error=forward(X,w) - Y
   return np.matmul(X.T, (error)) / X.shape[0]
 
-def train(X_train, Y_train, X_test, Y_test, iterations, lr, positional_encoding=False):
+def train(X_train, Y_train, X_test, Y_test, iterations, lr, positional_encoding=None):
   w=np.zeros((X_train.shape[1], Y_train.shape[1]), dtype=np.float64)
   for i in range(iterations):
     report(i, X_train, Y_train, X_test, Y_test, w, positional_encoding)

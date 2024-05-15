@@ -34,7 +34,7 @@ def encode_fives(Y):
 def one_hot_encode_(Y, exact_match=False, n_classes=10):
   n_labels = Y.shape[0]
   encoded_Y = np.zeros((n_labels,n_classes))
-
+  _ignore = None
   value_to_index = {}
   if exact_match:
     value_to_index, _ignore = one_hot_encoding_values(Y)
